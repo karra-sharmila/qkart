@@ -3,29 +3,6 @@ import { Button, Card, Rate } from "antd";
 import React from "react";
 import "./Product.css";
 
-/**
- * @typedef {Object} Product
- * @property {string} name - The name or title of the product
- * @property {string} category - The category that the product belongs to
- * @property {number} cost - The price to buy the product
- * @property {number} rating - The aggregate rating of the product (integer out of five)
- * @property {string} image - Contains URL for the product image
- * @property {string} _id - Unique ID for the product
- */
-
-/**
- * The goal is to display an individual product as a card displaying relevant product properties
- * Product image and product title are primary information
- * Secondary information to be displayed includes cost, rating and category
- * We also need a button to add the product to cart from the product listing
- *
- * @param {Product} props.product
- *    The product object to be displayed
- * @param {function} props.addToCart
- *    Function to call when user clicks on a Product card's 'Add to cart' button
- * @returns {JSX}
- *    HTML and JSX to be rendered
- */
 export default function Product(props) {
   return (
     // Use Antd Card component to create a card-like view for individual products

@@ -5,14 +5,6 @@ import Header from "./Header";
 import "./Thanks.css";
 
 class Thanks extends React.Component {
-  /**
-   * The goal is to display a simple thank you page that the user will see after a successful order goes through
-   * Items to display can include:
-   * -    Thank you text
-   * -    Remaining wallet balance
-   * -    Link to go back to Products page to shop more
-   * @returns {JSX} HTML and JSX to be rendered
-   */
   render() {
     return (
       <>

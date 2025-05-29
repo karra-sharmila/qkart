@@ -10,15 +10,11 @@ describe("Auth test", () => {
 
   describe("Login", () => {
     it("should return user object if all ok", async () => {
-      // return true when the isPasswordMatch() method is called on the userOne object
       userOne.isPasswordMatch = () => {
         return true;
       };
 
-      // Setup mock function for the getUserByEmail() function of userService
       const getUserByEmailMock = jest.fn();
-
-      // Return userOne object if getUserEmail() function of userService is called
       userService.getUserByEmail = getUserByEmailMock.mockReturnValue(userOne);
 
       let authResponse = await authService.loginUserWithEmailAndPassword(
@@ -26,9 +22,7 @@ describe("Auth test", () => {
         "password1"
       );
 
-      // Check if the getUserByEmail() function was called
       expect(getUserByEmailMock).toHaveBeenCalled();
-      // Check response
       expect(JSON.stringify(authResponse)).toEqual(JSON.stringify(userOne));
     });
 

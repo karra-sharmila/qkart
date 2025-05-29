@@ -88,7 +88,6 @@ describe("Cart test", () => {
 
   describe("Update product in cart", () => {
     it("should save and return the updated cart", async () => {
-      // Mock Cart.findOne() method to return predefined cart
       mockingoose(Cart).toReturn(cartWithProductsUserOne, "findOne");
       mockingoose(Product).toReturn(
         cartWithProductsUserOne.cartItems[0].product,
@@ -120,7 +119,6 @@ describe("Cart test", () => {
     });
 
     it("should throw 400 error if cart is null", async () => {
-      // Mock Cart.findOne() method to return predefined cart
       mockingoose(Cart).toReturn(null, "findOne");
 
       const qty = 5;
@@ -136,7 +134,6 @@ describe("Cart test", () => {
     });
 
     it("should throw 400 error if product to update is not in cart", async () => {
-      // Mock Cart.findOne() method to return predefined cart
       mockingoose(Cart).toReturn(emptyCart, "findOne");
 
       const qty = 5;
@@ -167,7 +164,6 @@ describe("Cart test", () => {
     });
 
     it("should throw 400 error if cart is null", async () => {
-      // Mock Cart.findOne() method to return predefined cart
       mockingoose(Cart).toReturn(null, "findOne");
 
       const res = cartService.deleteProductFromCart(userOne, productOne._id);
@@ -182,7 +178,6 @@ describe("Cart test", () => {
     });
 
     it("should throw error if product to delete not in cart", async () => {
-      // Mock Cart.findOne() method to return predefined cart
       mockingoose(Cart).toReturn(emptyCart, "findOne");
 
       const res = cartService.deleteProductFromCart(userOne, productOne._id);

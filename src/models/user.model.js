@@ -1,12 +1,9 @@
 const mongoose = require("mongoose");
-// NOTE - "validator" external library and not the custom middleware at src/middlewares/validate.js
 const validator = require("validator");
 const config = require("../config/config");
 const bcrypt = require("bcryptjs");
 const SALT_WORK_FACTOR = 8;
 
-
-// TODO: CRIO_TASK_MODULE_UNDERSTANDING_BASICS - Complete userSchema, a Mongoose schema for "users" collection
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -64,12 +61,7 @@ userSchema.pre("save", async function(next) {
     next(err);
   }
 });
-// TODO: CRIO_TASK_MODULE_UNDERSTANDING_BASICS - Implement the isEmailTaken() static method
-/**
- * Check if email is taken
- * @param {string} email - The user's email
- * @returns {Promise<boolean>}
- */
+
 userSchema.statics.isEmailTaken = async function (email) {
     const data = await this.findOne({email});
     if(data != null){

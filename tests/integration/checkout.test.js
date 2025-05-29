@@ -31,10 +31,6 @@ describe("Cart routes", () => {
       // Simulate an API request
       const res = await request(app).put(`/v1/cart/checkout`).send();
 
-      // Log response text to terminal
-      // console.log(res.text);
-
-      // TODO: CRIO_TASK_MODULE_TEST - Assert if status code is "401 UNAUTHORIZED"
       expect(res.status).toEqual(httpStatus.UNAUTHORIZED);
     });
 
@@ -50,7 +46,6 @@ describe("Cart routes", () => {
         .set("Authorization", `Bearer ${userOneAccessToken}`)
         .send();
 
-      // TODO: CRIO_TASK_MODULE_TEST - Assert if status code is "400 BAD REQUEST"
       expect(res.status).toEqual(httpStatus.BAD_REQUEST);
     });
 
@@ -65,7 +60,6 @@ describe("Cart routes", () => {
         .set("Authorization", `Bearer ${userTwoAccessToken}`)
         .send();
 
-      // TODO: CRIO_TASK_MODULE_TEST - Assert if status code is 400
       expect(res.status).toEqual(httpStatus.BAD_REQUEST);
     });
 
@@ -79,7 +73,6 @@ describe("Cart routes", () => {
         .set("Authorization", `Bearer ${userOneAccessToken}`)
         .send();
 
-      // TODO: CRIO_TASK_MODULE_TEST - Assert if status code is 400
        expect(res.status).toEqual(httpStatus.BAD_REQUEST);
     });
 
@@ -92,12 +85,7 @@ describe("Cart routes", () => {
         .set("Authorization", `Bearer ${userOneAccessToken}`)
         .send();
 
-      // TODO: CRIO_TASK_MODULE_TEST - Assert if status code is 204
-       expect(res.status).toEqual(httpStatus.NO_CONTENT);
-
-      // TODO: CRIO_TASK_MODULE_TEST - Get the cart for "userOne" and assert if
-      // - Cart exists
-      // - Length of "cartItems" array is 0
+      expect(res.status).toEqual(httpStatus.NO_CONTENT);
       const dbCart = await Cart.findOne({ email: userOne.email });
       expect(dbCart).not.toBeNull();
       expect(dbCart.cartItems.length).toBe(0);
